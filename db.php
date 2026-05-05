@@ -1,12 +1,14 @@
-<?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db   = "hotel_booking"; // your database name
+<!-- Database Setup -->
 
-$conn = mysqli_connect($host, $user, $pass, $db);
+<?php
+$conn = mysqli_connect(
+    "sql102.infinityfree.com",   // DB Host
+    "if0_41572727",              // DB Username
+    "6XOkNqfUiW7UIre",             // DB Password
+    "if0_41572727_hotel_db"      // DB Name
+);
 
 if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
