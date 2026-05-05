@@ -31,30 +31,30 @@ $result = $conn->query($sql);
             <a href="login.php">Management Login</a>
         </nav>
     </header>
-<!-- ===== HERO SLIDER ===== -->
-<div class="hero-slider">
+    <!-- ===== HERO SLIDER ===== -->
+    <div class="hero-slider">
 
-    <?php for ($i = 1; $i <= 8; $i++): ?>
-        <div class="slide <?= $i === 1 ? 'active' : '' ?>"
-             style="background-image:url('images/hotel<?= $i ?>.jpg')">
+        <?php for ($i = 1; $i <= 8; $i++): ?>
+            <div class="slide <?= $i === 1 ? 'active' : '' ?>"
+                style="background-image:url('images/hotel<?= $i ?>.jpg')">
+            </div>
+        <?php endfor; ?>
+
+        <div class="slide-text">
+            <span class="slider-badge" id="sliderBadge">5★ Luxury Hotel</span>
+            <h1 id="sliderTitle">Experience Royal Luxury</h1>
+            <p id="sliderQuote">Comfort • Elegance • Independence</p>
+
+            <div class="slider-features" id="sliderFeatures">
+                <span>✓ Prime Location</span>
+                <span>✓ Premium Rooms</span>
+                <span>✓ 24×7 Service</span>
+            </div>
         </div>
-    <?php endfor; ?>
 
-    <div class="slide-text">
-        <span class="slider-badge" id="sliderBadge">5★ Luxury Hotel</span>
-        <h1 id="sliderTitle">Experience Royal Luxury</h1>
-        <p id="sliderQuote">Comfort • Elegance • Independence</p>
-
-        <div class="slider-features" id="sliderFeatures">
-            <span>✓ Prime Location</span>
-            <span>✓ Premium Rooms</span>
-            <span>✓ 24×7 Service</span>
-        </div>
     </div>
 
-</div>
-
-</div>
+    </div>
 
     </div>
 
@@ -97,70 +97,69 @@ $result = $conn->query($sql);
     </section>
 
     <footer>
-        © <?= date('Y') ?> The Sovereign Suites | All Rights Reserved
+        © <?= date('Y') ?> © 2026 The Sovereign Suites | Designed & Developed by Syeed Anwar
     </footer>
 
     <script>
-    const slides = document.querySelectorAll(".slide");
-    let index = 0;
+        const slides = document.querySelectorAll(".slide");
+        let index = 0;
 
-    const sliderContent = [
-        {
-            badge: "5★ Luxury Hotel",
-            title: "Experience Royal Luxury",
-            quote: "Comfort • Elegance • Independence",
-            features: ["Prime Location", "Premium Rooms", "24×7 Service"]
-        },
-        {
-            badge: "Exclusive Stay",
-            title: "Where Comfort Meets Class",
-            quote: "Designed for refined travelers",
-            features: ["Spacious Suites", "Luxury Interiors", "Peaceful Ambience"]
-        },
-        {
-            badge: "Best Price Guarantee",
-            title: "Luxury That Fits Your Budget",
-            quote: "Affordable elegance without compromise",
-            features: ["Transparent Pricing", "No Hidden Charges", "Value for Money"]
-        },
-        {
-            badge: "Business & Leisure",
-            title: "Stay Smart. Stay Stylish.",
-            quote: "An experience beyond accommodation",
-            features: ["High-Speed WiFi", "Business Friendly", "Central Location"]
+        const sliderContent = [{
+                badge: "5★ Luxury Hotel",
+                title: "Experience Royal Luxury",
+                quote: "Comfort • Elegance • Independence",
+                features: ["Prime Location", "Premium Rooms", "24×7 Service"]
+            },
+            {
+                badge: "Exclusive Stay",
+                title: "Where Comfort Meets Class",
+                quote: "Designed for refined travelers",
+                features: ["Spacious Suites", "Luxury Interiors", "Peaceful Ambience"]
+            },
+            {
+                badge: "Best Price Guarantee",
+                title: "Luxury That Fits Your Budget",
+                quote: "Affordable elegance without compromise",
+                features: ["Transparent Pricing", "No Hidden Charges", "Value for Money"]
+            },
+            {
+                badge: "Business & Leisure",
+                title: "Stay Smart. Stay Stylish.",
+                quote: "An experience beyond accommodation",
+                features: ["High-Speed WiFi", "Business Friendly", "Central Location"]
+            }
+        ];
+
+        const badge = document.getElementById("sliderBadge");
+        const title = document.getElementById("sliderTitle");
+        const quote = document.getElementById("sliderQuote");
+        const features = document.getElementById("sliderFeatures");
+
+        function updateText(slideIndex) {
+            const data = sliderContent[slideIndex % sliderContent.length];
+
+            badge.textContent = data.badge;
+            title.textContent = data.title;
+            quote.textContent = data.quote;
+
+            features.innerHTML = "";
+            data.features.forEach(item => {
+                const span = document.createElement("span");
+                span.textContent = "✓ " + item;
+                features.appendChild(span);
+            });
         }
-    ];
 
-    const badge = document.getElementById("sliderBadge");
-    const title = document.getElementById("sliderTitle");
-    const quote = document.getElementById("sliderQuote");
-    const features = document.getElementById("sliderFeatures");
+        setInterval(() => {
+            slides[index].classList.remove("active");
 
-    function updateText(slideIndex) {
-        const data = sliderContent[slideIndex % sliderContent.length];
+            index = (index + 1) % slides.length;
 
-        badge.textContent = data.badge;
-        title.textContent = data.title;
-        quote.textContent = data.quote;
+            slides[index].classList.add("active");
 
-        features.innerHTML = "";
-        data.features.forEach(item => {
-            const span = document.createElement("span");
-            span.textContent = "✓ " + item;
-            features.appendChild(span);
-        });
-    }
-
-    setInterval(() => {
-        slides[index].classList.remove("active");
-
-        index = (index + 1) % slides.length;
-
-        slides[index].classList.add("active");
-
-        updateText(index);
-    }, 4000);
-</script>
+            updateText(index);
+        }, 4000);
+    </script>
 
 
 
