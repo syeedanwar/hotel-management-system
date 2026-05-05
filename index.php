@@ -24,6 +24,7 @@ $result = $conn->query($sql);
             <span class="brand-sub">Suites</span>
         </div>
 
+        
         <nav class="nav-links">
             <a href="index.php">Home</a>
             <a href="#location">Location</a>
