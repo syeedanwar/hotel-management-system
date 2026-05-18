@@ -3,38 +3,131 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <title>Contact Section</title>
+
     <style>
-        .help {
-            text-align: center;
-            font-size: 20px;
-            background-color: rgb(249, 249, 166);
-            height: 80vh;
-            display: flex;
+        /* Reset default browser styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Main container styling */
+        .help {
+            background-color: rgb(249, 249, 166);
+
+            /* Full screen height */
+            min-height: 100vh;
+
+            /* Flexbox for center alignment */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            /* Text alignment */
+            text-align: center;
+
+            /* Inner spacing */
+            padding: 5px;
+
+            /* Space between elements */
+            gap: 20px;
+        }
+
+        /* Main heading styling */
+        .help h1 {
+            font-size: 2rem;
+        }
+
+        /* Contact text styling*/
+        .help h2,
+        .help p {
+            font-size: 2rem;
+        }
+
+        /* Link styling */
+        .help a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        /* Video styling */
         .help video {
-            width: 40vw;
-            display: flex;
-            padding-left: 10%;
-            display: flex;
-            height: 70vh;
-            width: 60vw;
+            width: 100%;
+
+            /* Maximum width on large screens */
+            max-width: 700px;
+
+            /* Rounded corners */
+            border-radius: 10px;
+        }
+
+        /* Responsive Design
+           Applies when screen width
+           is 768px or smaller */
+        @media (max-width: 768px) {
+
+            /* Smaller heading size */
+            .help h1 {
+                font-size: 1.5rem;
+            }
+
+            /* Larger contact text for mobile */
+            .help h2,
+            .help p {
+                font-size: 3rem;
+            }
+
+            /* More padding on mobile */
+            .help {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="help">
-        <h1>For any query:- </h1>
-        <h2>Contact us at:- <a href="">+91-9262534723</a>
-            <p>Mail us at:- <a href="">syeed7015@gmail.com</a></p>
-            <video src="Screen Recording.mp4" controls></video>
-    </div>
-</body>
 
-</html>
+    <!-- Main Contact Section -->
+    <div class="help">
+
+        <h1>For any query:</h1>
+
+        <!-- Phone number section -->
+        <h2>
+            Contact us at:
+
+            <!-- Clickable phone number -->
+            <a href="tel:+919262534723">
+                +91-9262534723
+            </a>
+        </h2>
+
+        <!-- Email section -->
+        <p>
+            Mail us at:
+
+            <!-- Clickable email -->
+            <a href="mailto:syeed7015@gmail.com">
+                syeed7015@gmail.com
+            </a>
+        </p>
+
+        <!-- Video section -->
+        <video src="Screen Recording.mp4" controls></video>
+
+    </div>
+
 </body>
 
 </html>
