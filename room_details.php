@@ -24,7 +24,7 @@ $room = $result->fetch_assoc();
 $roomType = strtolower(trim($room['room_type']));
 
 $imageMap = [
-    'single' => '/Hotel_Management_System/images/Single.jpg',
+    'single' => '/Hotel_Management_System/images/single.jpg',
     'double' => '/Hotel_Management_System/images/double.jpg',
     'deluxe' => '/Hotel_Management_System/images/deluxe.jpg',
     'suite'  => '/Hotel_Management_System/images/suite.jpg'
