@@ -2,7 +2,7 @@
 session_start();
 include 'db.php';
 
-/* REQUIRED POST FIELDS */
+
 $required = ['full_name','gender','mobile','email','aadhaar','check_in','check_out'];
 
 foreach ($required as $field) {
@@ -11,7 +11,6 @@ foreach ($required as $field) {
     }
 }
 
-/* ROOM SESSION */
 if (!isset($_SESSION['room_type'], $_SESSION['price_per_night'])) {
     die("Room session expired");
 }
@@ -28,7 +27,7 @@ $aadhaar   = $_POST['aadhaar'];
 $check_in  = $_POST['check_in'];
 $check_out = $_POST['check_out'];
 
-/* DATE CHECK */
+
 $days = (strtotime($check_out) - strtotime($check_in)) / 86400;
 if ($days <= 0) {
     die("Invalid check-out date");
@@ -36,7 +35,6 @@ if ($days <= 0) {
 
 $total_price = $days * $price;
 
-/* INSERT */
 $stmt = $conn->prepare("
 INSERT INTO bookings
 (full_name, gender, mobile, email, aadhaar, room_type, price_per_night, total_price, check_in, check_out)
@@ -59,10 +57,10 @@ $stmt->bind_param(
 
 $stmt->execute();
 
-/* ✅ SET SESSION MESSAGE */
+
 $_SESSION['booking_id']  = $stmt->insert_id;
 $_SESSION['success_msg'] = "🎉 Booking confirmed successfully!";
 
-/* REDIRECT */
+
 header("Location: booking_success.php");
 exit;
