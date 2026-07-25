@@ -2,11 +2,12 @@
 session_start();
 $bookingId = $_SESSION['booking_id'] ?? null;
 $successMsg = $_SESSION['success_msg'] ?? null;
-unset($_SESSION['success_msg']); // show only once
+unset($_SESSION['success_msg']); 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Booking Successful</title>
@@ -30,7 +31,7 @@ unset($_SESSION['success_msg']); // show only once
             padding: 30px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .check-icon {
@@ -82,37 +83,37 @@ unset($_SESSION['success_msg']); // show only once
         }
     </style>
 </head>
+
 <body>
 
-<div class="success-card">
-    <div class="check-icon">✔</div>
+    <div class="success-card">
+        <div class="check-icon">✔</div>
 
-    <?php if ($successMsg): ?>
-        <h1>Booking Confirmed!</h1>
-        <p><?= htmlspecialchars($successMsg); ?></p>
+        <?php if ($successMsg): ?>
+            <h1>Booking Confirmed!</h1>
+            <p><?= htmlspecialchars($successMsg); ?></p>
 
-        <div class="booking-id">
-            Booking ID: <?= htmlspecialchars($bookingId); ?>
-        </div>
+            <div class="booking-id">
+                Booking ID: <?= htmlspecialchars($bookingId); ?>
+            </div>
 
-        <!-- Invoice Button -->
-        <a href="invoice.php?id=<?= $bookingId; ?>" class="btn secondary">
-            View / Download Invoice
-        </a>
+            <a href="invoice.php?id=<?= $bookingId; ?>" class="btn secondary">
+                View / Download Invoice
+            </a>
 
-        <br>
+            <br>
 
-        <!-- Back to Home or Rooms -->
-        <a href="index.php" class="btn">
-            Book Another Room
-        </a>
+            <a href="index.php" class="btn">
+                Book Another Room
+            </a>
 
-    <?php else: ?>
-        <h1>No Booking Found</h1>
-        <p>Your booking session has expired.</p>
-        <a href="index.php" class="btn">Back To Home</a>
-    <?php endif; ?>
-</div>
+        <?php else: ?>
+            <h1>No Booking Found</h1>
+            <p>Your booking session has expired.</p>
+            <a href="index.php" class="btn">Back To Home</a>
+        <?php endif; ?>
+    </div>
 
 </body>
+
 </html>
